@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script type="module" src="../assets/components/test.js"></script>
-        <link rel="stylesheet" href="../assets/css/test.css"></link>
+        <link rel="stylesheet" href="../assets/css/theme.css"></link>
+        <script type="module" src="../assets/components/top-bar.js"></script>
     </head>
     <body>
-        Hello World!
-        <yd-test></yd-test>
+        <yd-top-bar>
+            <div slot="left"><a href="./">Logo</a></div>
+            <div slot="right"><a href="./series.html">Series</a></div>
+            <div slot="right"><a href="./about.html">About</a></div>
+            <div slot="right">Language</div>
+        </yd-top-bar>
+        <div>Yuzu Dreams</div>
         <div>
             <img
                 src="../assets/images/logo.png"

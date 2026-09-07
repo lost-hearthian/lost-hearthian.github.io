@@ -1,0 +1,14 @@
+:root {
+    --lime-cream: #e1ff9cff;
+    --lime-cream-2: #bde858ff;
+    --light-gold: #fff491ff;
+    --banana-cream: #ffe44dff;
+    --icy-blue: #c2ecffff;
+    --maya-blue: #70bcffff;
+    --powder-blush: #efb0a1ff;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
