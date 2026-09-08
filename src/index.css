@@ -8,7 +8,9 @@
   --maya-blue: #70bcff;
   --powder-blush: #efb0a1;
 
-  --nav-height: 80px;
+  --wave-height: 20px;
+  --nav-content-height: 80px;
+  --nav-height: calc(var(--nav-content-height) + var(--wave-height));
 }
 
 body {
@@ -25,16 +27,15 @@ nav {
   background: var(--lime-cream);
 
   width: 100%;
-  height: var(--nav-height);
+  height: var(--nav-content-height);
   position: sticky;
   top: 0px;
-
-  gap: 30px;
-  padding: 0 30px;
 
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  gap: 30px;
+  padding: 0 30px;
 
   > .logo {
     flex-grow: 1;
@@ -68,9 +69,28 @@ nav {
 
 header {
   background: var(--lime-cream);
-  height: 100vh;
+  min-height: calc(95vh - var(--nav-content-height) - var(--wave-height));
+
+  position: relative;
+  z-index: -1; /* appear behind nav bar */
+
   h1 {
     margin: 0;
+  }
+}
+
+nav,
+header {
+  &::after {
+    content: " ";
+    position: absolute;
+    left: 0px;
+    top: 100%;
+    background: var(--lime-cream);
+    width: 100%;
+    height: var(--wave-height);
+    mask: url("wavy.svg") repeat-x 0 0 / 800px var(--wave-height);
+    z-index: -1; /* appear beneath the language dropdown */
   }
 }
 
