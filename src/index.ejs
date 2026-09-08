@@ -2,19 +2,68 @@
 <html>
   <head></head>
   <body>
-    <div>
-      Languages:
-      <ul>
-        <% for (const [language, _] of translations) { %>
-        <li><a href="/<%= language %>"><%= language %></a></li>
-        <% } %>
-      </ul>
-    </div>
-    <img
-      src="<%= require('../assets/logo.png') %>"
-      alt="Capybara sleeping next to giant yuzu fruit"
-      width="300"
-      height="200"
-    />
+    <nav>
+      <div class="logo"><%= t.title %></div>
+      <a href="#series">Series</a>
+      <a href="#about">About</a>
+      <details>
+        <summary><%= t.language %></summary>
+        <ul>
+          <% for (const [other_language, other_t] of translations) { %>
+          <li><a href="/<%= other_language %>"><%= other_t.language %></a></li>
+          <% } %>
+        </ul>
+      </details>
+    </nav>
+    <header>
+      <h1><%= t.title %></h1>
+      <img
+        src="<%= require('../assets/logo.png') %>"
+        alt="Capybara sleeping next to giant yuzu fruit"
+        width="300"
+        height="200"
+      />
+    </header>
+
+    <section id="series">
+      <h2>Series</h2>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+      <p>Lorem</p>
+    </section>
   </body>
 </html>

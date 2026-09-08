@@ -22,7 +22,13 @@ export default defineConfig({
   html: {
     template: "src/index.ejs",
     title: ({ entryName }) => translations.get(entryName).title,
-    templateParameters: { translations },
+    templateParameters: ({ entryName }) => {
+      return {
+        translations,
+        language: entryName,
+        t: translations.get(entryName),
+      };
+    },
   },
   plugins: [pluginHtmlMinifierTerser()],
 });

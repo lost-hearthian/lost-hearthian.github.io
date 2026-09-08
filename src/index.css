@@ -1,14 +1,86 @@
 :root {
-  --lime-cream: #e1ff9cff;
-  --lime-cream-2: #bde858ff;
-  --light-gold: #fff491ff;
-  --banana-cream: #ffe44dff;
-  --icy-blue: #c2ecffff;
-  --maya-blue: #70bcffff;
-  --powder-blush: #efb0a1ff;
+  --fg: #000;
+  --lime-cream: #e1ff9c;
+  --lime-cream-2: #bde858;
+  --light-gold: #fff491;
+  --banana-cream: #ffe44d;
+  --icy-blue: #c2ecff;
+  --maya-blue: #70bcff;
+  --powder-blush: #efb0a1;
+
+  --nav-height: 80px;
 }
 
 body {
   padding: 0px;
   margin: 0px;
+  font-family: "SS Pretzel", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+nav {
+  background: var(--lime-cream);
+
+  width: 100%;
+  height: var(--nav-height);
+  position: sticky;
+  top: 0px;
+
+  gap: 30px;
+  padding: 0 30px;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  > .logo {
+    flex-grow: 1;
+    font-size: 20px;
+  }
+  a {
+    color: var(--fg);
+    text-decoration: none;
+  }
+  > details {
+    margin: 0;
+    padding: 0;
+
+    position: relative;
+    > ul {
+      position: absolute;
+      left: 0px;
+
+      margin: 0;
+      padding: 0;
+
+      list-style-type: none;
+      background: var(--lime-cream);
+
+      > li {
+        margin: 20px;
+      }
+    }
+  }
+}
+
+header {
+  background: var(--lime-cream);
+  height: 100vh;
+  h1 {
+    margin: 0;
+  }
+}
+
+section {
+  scroll-margin-top: calc(var(--nav-height) + 10px);
+}
+
+@font-face {
+  font-family: "SS Pretzel";
+  /* TODO: Maybe convert to WOFF2 */
+  src: url("../fonts/SS Pretzel/OTF/SS Pretzel.otf");
+  font-display: block;
 }
