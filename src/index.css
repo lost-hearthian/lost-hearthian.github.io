@@ -30,6 +30,7 @@ nav {
   height: var(--nav-content-height);
   position: sticky;
   top: 0px;
+  z-index: 1;
 
   display: flex;
   flex-flow: row wrap;
@@ -70,17 +71,74 @@ nav {
 header {
   background: var(--lime-cream);
   min-height: calc(95vh - var(--nav-content-height) - var(--wave-height));
+  padding-top: var(--wave-height);
 
   position: relative;
-  z-index: -1; /* appear behind nav bar */
 
-  h1 {
-    margin: 0;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  > .logo {
+    flex-grow: 1;
+    text-align: center;
+  }
+  > .series-carousel {
+    flex-grow: 1;
+    max-width: 100%;
+    padding: 16px;
+
+    > .splide {
+      max-height: 60vh;
+      --aspect-ratio: 1.05;
+      aspect-ratio: var(--aspect-ratio);
+      margin: 0 auto;
+      --padding: 15%;
+
+      > .splide__track {
+        height: 100%;
+
+        mask: linear-gradient(
+          to right,
+          transparent 0%,
+          black 15%,
+          black 85%,
+          transparent 100%
+        );
+
+        > .splide__list > .splide__slide {
+          width: 100%;
+          text-align: center;
+          --scale: 1.03;
+          /*
+		   * Because of the mask, scaling the image up will clip it, so we shrink the image a little
+		   * instead by adding vertical padding. Suppose the carousel has height `h`, and let our
+		   * padding value be `p`. Since padding % is a % of the parent width, we have:
+		   * h = h / var(--scale) + 2 * p * (1 - 2 * var(--padding)) * var(--aspect-ratio) * h
+		   */
+          padding: calc(
+              (50% - 50% / var(--scale)) / (1 - 2 * (var(--padding) / 100%)) /
+                var(--aspect-ratio)
+            )
+            0;
+          transition: scale 0.2s ease;
+          &:hover {
+            scale: var(--scale);
+          }
+          > img {
+            height: 100%;
+            width: auto;
+          }
+        }
+      }
+    }
   }
 }
 
+/* Add the wave at the bottom of the <nav> and <header>. */
 nav,
-header {
+header,
+nav > details > ul {
   &::after {
     content: " ";
     position: absolute;
@@ -89,7 +147,7 @@ header {
     background: var(--lime-cream);
     width: 100%;
     height: var(--wave-height);
-    mask: url("wavy.svg") repeat-x 0 0 / 800px var(--wave-height);
+    mask: url("wavy.svg") repeat-x 120px 0 / 800px var(--wave-height);
     z-index: -1; /* appear beneath the language dropdown */
   }
 }

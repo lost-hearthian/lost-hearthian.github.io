@@ -26,7 +26,7 @@ export default defineConfig({
       return {
         translations,
         language: entryName,
-        t: translations.get(entryName),
+        t: translations.get(entryName as string),
       };
     },
   },

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= language %>">
   <head></head>
   <body>
     <nav>
@@ -16,13 +16,36 @@
       </details>
     </nav>
     <header>
-      <h1><%= t.title %></h1>
-      <img
-        src="<%= require('../assets/logo.png') %>"
-        alt="Capybara sleeping next to giant yuzu fruit"
-        width="300"
-        height="200"
-      />
+      <div class="logo">
+        <h1><%= t.title %></h1>
+        <img
+          src="<%= require('../assets/logo.png') %>"
+          alt="Capybara sleeping next to giant yuzu fruit"
+          width="300"
+          height="200"
+        />
+      </div>
+      <div class="series-carousel">
+        <div class="splide" role="group">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li class="splide__slide">
+                <img
+                  src="<%= require('../assets/the-secret-sleepover/cover.webp') %>"
+                />
+              </li>
+              <li class="splide__slide">
+                <img src="<%= require('../assets/blooddiary/cover.webp') %>" />
+              </li>
+              <li class="splide__slide">
+                <img
+                  src="<%= require('../assets/asuka-and-misaki/cover.jpg') %>"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </header>
 
     <section id="series">

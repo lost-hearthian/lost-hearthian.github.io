@@ -108,6 +108,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@splidejs/splide':
+        specifier: ^4.1.4
+        version: 4.1.4
     devDependencies:
       '@rsbuild/core':
         specifier: ^2.2.3
@@ -254,6 +258,9 @@ packages:
         optional: true
       '@swc/helpers':
         optional: true
+
+  '@splidejs/splide@4.1.4':
+    resolution: {integrity: sha512-5I30evTJcAJQXt6vJ26g2xEkG+l1nXcpEw4xpKh0/FWQ8ozmAeTbtniVtVmz2sH1Es3vgfC4SS8B2X4o5JMptA==}
 
   '@swc/helpers@0.5.23':
     resolution: {integrity: sha512-5lSsMOTXURePglDfvuAQUqkGek9Hg2kksOYay2m0+XR++b2NWYL/4sWyuvVBIs8oKnJaxkdi9whaL/sqN13afw==}
@@ -477,6 +484,8 @@ snapshots:
       '@rspack/binding': 2.2.2
     optionalDependencies:
       '@swc/helpers': 0.5.23
+
+  '@splidejs/splide@4.1.4': {}
 
   '@swc/helpers@0.5.23':
     dependencies:
