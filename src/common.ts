@@ -1,5 +1,6 @@
 import "./common.css";
 
+// allow the EJS files to import assets via their `asset` function
 import.meta.glob("../assets/**");
 
 {

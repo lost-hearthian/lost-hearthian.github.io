@@ -12,30 +12,29 @@ for (const file of (await fs.readdir("translations")).sort()) {
   translations.set(file.slice(0, 2), mod.default);
 }
 
+const entry: Record<string, string> = {
+  index: "./src/redirect",
+  404: "./src/404",
+  ...Object.fromEntries(
+    translations.keys().map((lang) => [lang, "./src/index"]),
+  ),
+};
+
 export default defineConfig({
-  source: {
-    entry: {
-      index: "./src/redirect",
-      ...Object.fromEntries(
-        translations.keys().map((lang) => [lang, "./src/index"]),
-      ),
-    },
-  },
+  source: { entry },
   html: {
-    template: ({ entryName }) => {
-      if (entryName === "index") return "src/redirect.ejs";
-      return "src/index.ejs";
-    },
+    template: ({ entryName }) => `${entry[entryName]}.ejs`,
     title: "",
-    templateParameters: (defaultValue, { entryName }) => {
-      const language = entryName === "index" ? "en" : entryName;
+    templateParameters(defaultValue, { entryName }) {
+      const language =
+        entryName === "index" || entryName === "404" ? "en" : entryName;
       const compilation = defaultValue.compilation as Rspack.Compilation;
       return {
         ...defaultValue,
         translations,
         language,
         t: translations.get(language),
-        asset: (s: string) => {
+        asset(s: string) {
           const assets = compilation.getAssets();
           const asset = assets.find((a) => a.info.sourceFilename === s);
           if (asset === undefined) {
