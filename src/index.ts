@@ -1,3 +1,4 @@
+import "./common";
 import "./index.css";
 import "@splidejs/splide/css";
 import Splide from "@splidejs/splide";

@@ -1,0 +1,15 @@
+<nav>
+  <div class="logo"><%= t.title %></div>
+  <a href="#series">Series</a>
+  <a href="#about">About</a>
+  <details class="lang-select">
+    <summary>
+      <%- include("../translations/flags/" + language + ".svg") %>
+    </summary>
+    <ul>
+      <% for (const [other_language, other_t] of translations) { %>
+      <li><a href="/<%= other_language %>"><%= other_t.language %></a></li>
+      <% } %>
+    </ul>
+  </details>
+</nav>

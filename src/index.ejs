@@ -1,25 +1,15 @@
 <!DOCTYPE html>
 <html lang="<%= language %>">
-  <head></head>
+  <head>
+    <title><%= t.title %></title>
+  </head>
   <body>
-    <nav>
-      <div class="logo"><%= t.title %></div>
-      <a href="#series">Series</a>
-      <a href="#about">About</a>
-      <details>
-        <summary><%= t.language %></summary>
-        <ul>
-          <% for (const [other_language, other_t] of translations) { %>
-          <li><a href="/<%= other_language %>"><%= other_t.language %></a></li>
-          <% } %>
-        </ul>
-      </details>
-    </nav>
+    <%- include("navbar.ejs") %>
     <header>
       <div class="logo">
         <h1><%= t.title %></h1>
         <img
-          src="<%= require('../assets/logo.png') %>"
+          src="<%= asset('assets/logo.png') %>"
           alt="Capybara sleeping next to giant yuzu fruit"
           width="300"
           height="200"
@@ -31,16 +21,14 @@
             <ul class="splide__list">
               <li class="splide__slide">
                 <img
-                  src="<%= require('../assets/the-secret-sleepover/cover.webp') %>"
+                  src="<%= asset('assets/the-secret-sleepover/cover.webp') %>"
                 />
               </li>
               <li class="splide__slide">
-                <img src="<%= require('../assets/blooddiary/cover.webp') %>" />
+                <img src="<%= asset('assets/blooddiary/cover.webp') %>" />
               </li>
               <li class="splide__slide">
-                <img
-                  src="<%= require('../assets/asuka-and-misaki/cover.jpg') %>"
-                />
+                <img src="<%= asset('assets/asuka-and-misaki/cover.jpg') %>" />
               </li>
             </ul>
           </div>

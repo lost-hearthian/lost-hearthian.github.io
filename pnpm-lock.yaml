@@ -125,6 +125,9 @@ importers:
       prettier-plugin-ejs:
         specifier: ^1.0.3
         version: 1.0.3(prettier@3.9.6)
+      rsbuild-plugin-ejs:
+        specifier: ^2.0.1
+        version: 2.0.1(@rsbuild/core@2.2.3)
       rsbuild-plugin-html-minifier-terser:
         specifier: ^1.1.5
         version: 1.1.5(@rsbuild/core@2.2.3)
@@ -268,6 +271,9 @@ packages:
   '@tybys/wasm-util@0.10.3':
     resolution: {integrity: sha512-F3fo1MYrRJYL3zER0OUOmkutjr1Vp23m7OsSgp7nq4SP6OqX6C/56XFIPAl5bt3zaBRjmW7SGz3u/6LwFpYcOg==}
 
+  '@types/ejs@3.1.5':
+    resolution: {integrity: sha512-nv+GSx77ZtXiJzwKdsASqi+YQ5Z7vwHsTP0JY2SiQgjGckkBRKZnk8nIM+7oUZ1VCtuTz0+By4qVR7fqzp/Dfg==}
+
   '@types/html-minifier-terser@7.0.2':
     resolution: {integrity: sha512-mm2HqV22l8lFQh4r2oSsOEVea+m0qqxEmwpc9kC1p/XzmjLWrReR9D/GRs8Pex2NX/imyEH9c5IU/7tMBQCHOA==}
 
@@ -298,6 +304,11 @@ packages:
 
   dot-case@3.0.4:
     resolution: {integrity: sha512-Kv5nKlh6yRrdrGvxeJ2e5y2eRUpkUosIW4A2AS38zwSz27zu7ufDwQPi5Jhs3XAlGNetl3bmnGhQsMtkKJnj3w==}
+
+  ejs@5.0.2:
+    resolution: {integrity: sha512-IpbUaI/CAW86l3f+T8zN0iggSc0LmMZLcIW5eRVStLVNCoTXkE0YlncbbH50fp8Cl6zHIky0sW2uUbhBqGw0Jw==}
+    engines: {node: '>=0.12.18'}
+    hasBin: true
 
   entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
@@ -333,6 +344,14 @@ packages:
   relateurl@0.2.7:
     resolution: {integrity: sha512-G08Dxvm4iDN3MLM0EsP62EDV9IuhXPR6blNz6Utcp7zyV3tr4HVNINt6MpaRWbxoOHT3Q7YN2P+jaHX8vUbgog==}
     engines: {node: '>= 0.10'}
+
+  rsbuild-plugin-ejs@2.0.1:
+    resolution: {integrity: sha512-GJHDjhpFEOo0faQgdniMAws8vbUMGqFAHchl9BJNbERQHSLAS+WaYOPkEBu0xCixo6gBOoqyffFLU9V1le1QjQ==}
+    peerDependencies:
+      '@rsbuild/core': ^1.0.0 || ^2.0.0-0
+    peerDependenciesMeta:
+      '@rsbuild/core':
+        optional: true
 
   rsbuild-plugin-html-minifier-terser@1.1.5:
     resolution: {integrity: sha512-HE2BsDt/7mlbnd+NC50xPSTg9JlimIfSPp+jA6B4yK4SctBr+OMi3dCTg4eQ+aCR1r/MJTQYXXhkGY8FKxO1OQ==}
@@ -496,6 +515,8 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
+  '@types/ejs@3.1.5': {}
+
   '@types/html-minifier-terser@7.0.2': {}
 
   '@types/node@24.13.3':
@@ -523,6 +544,8 @@ snapshots:
     dependencies:
       no-case: 3.0.4
       tslib: 2.8.1
+
+  ejs@5.0.2: {}
 
   entities@4.5.0: {}
 
@@ -562,6 +585,13 @@ snapshots:
   prettier@3.9.6: {}
 
   relateurl@0.2.7: {}
+
+  rsbuild-plugin-ejs@2.0.1(@rsbuild/core@2.2.3):
+    dependencies:
+      '@types/ejs': 3.1.5
+      ejs: 5.0.2
+    optionalDependencies:
+      '@rsbuild/core': 2.2.3
 
   rsbuild-plugin-html-minifier-terser@1.1.5(@rsbuild/core@2.2.3):
     dependencies:
