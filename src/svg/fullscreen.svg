@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+	<path transform="translate(0 0) rotate(  0 2 2)" stroke-linecap="round" stroke-linejoin="round" d="M1 3 L1 1 L3 1" />
+	<path transform="translate(6 0) rotate( 90 2 2)" stroke-linecap="round" stroke-linejoin="round" d="M1 3 L1 1 L3 1" />
+	<path transform="translate(6 6) rotate(180 2 2)" stroke-linecap="round" stroke-linejoin="round" d="M1 3 L1 1 L3 1" />
+	<path transform="translate(0 6) rotate(270 2 2)" stroke-linecap="round" stroke-linejoin="round" d="M1 3 L1 1 L3 1" />
+</svg>

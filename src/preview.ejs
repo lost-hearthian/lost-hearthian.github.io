@@ -1,0 +1,17 @@
+<div
+  class="splide preview"
+  role="group"
+  data-start-i="<%= all_images.length %>"
+>
+  <button class="fullscreen"><%- include("svg/fullscreen.svg") %></button>
+  <div class="splide__track">
+    <ul class="splide__list">
+      <% for (const img of assetsIn(dir)) { %>
+      <li class="splide__slide">
+        <img src="<%= img %>" />
+      </li>
+      <% all_images.push(img); %>
+      <% } %>
+    </ul>
+  </div>
+</div>

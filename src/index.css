@@ -1,7 +1,10 @@
 header {
   background: var(--lime-cream);
   min-height: calc(95vh - var(--nav-content-height) - var(--wave-height));
-  padding-top: var(--wave-height);
+  margin-bottom: var(--wave-height);
+
+  /* Make the content look vertically centred */
+  padding-bottom: var(--nav-height);
 
   position: relative;
 
@@ -45,6 +48,9 @@ header {
 		   * instead by adding vertical padding. Suppose the carousel has height `h`, and let our
 		   * padding value be `p`. Since padding % is a % of the parent width, we have:
 		   * h = h / var(--scale) + 2 * p * (1 - 2 * var(--padding)) * var(--aspect-ratio) * h
+		   *
+		   * (Unfortunately, this doesn’t work on Firefox:
+		   * https://caniuse.com/mdn-css_types_calc_typed_division_produces_unitless_number)
 		   */
           padding: calc(
               (50% - 50% / var(--scale)) / (1 - 2 * (var(--padding) / 100%)) /
@@ -55,12 +61,104 @@ header {
           &:hover {
             scale: var(--scale);
           }
-          > img {
+          > a {
+            display: inline-block;
             height: 100%;
             width: auto;
+            > img {
+              height: 100%;
+              width: auto;
+            }
+          }
+          &:not(.is-visible) > a {
+            pointer-events: none;
           }
         }
       }
     }
+  }
+}
+
+.preview.splide {
+  width: 100%;
+  max-width: 300px;
+  img {
+    width: 100%;
+  }
+  float: left;
+  margin-bottom: 30px;
+  margin-right: 20px;
+
+  > .splide__track {
+    cursor: pointer;
+  }
+}
+
+#fullscreen {
+  display: none;
+
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  &.shown {
+    display: block;
+  }
+
+  .splide__slide {
+    width: 100vw;
+    height: 100vh;
+
+    background: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > img {
+      max-width: 100vw;
+      max-height: 100vh;
+    }
+  }
+
+  > .splide__pagination {
+    display: none;
+  }
+  > .splide__arrows > .splide__arrow {
+    width: 2.5em;
+    height: 2.5em;
+  }
+}
+
+.splide > .fullscreen {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 2.5em;
+  height: 2.5em;
+  z-index: 1;
+
+  background: #ccc;
+  border: none;
+  opacity: 0.7;
+  border-radius: 50%;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+
+  > svg {
+    width: 1.2em;
+    height: 1.2em;
+    stroke: #000;
+    stroke-width: 1.5px;
+  }
+  &:hover {
+    opacity: 0.9;
   }
 }

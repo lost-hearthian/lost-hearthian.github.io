@@ -34,7 +34,7 @@ export default defineConfig({
         translations,
         language,
         t: translations.get(language),
-        asset(s: string) {
+        asset(s: string): string {
           const assets = compilation.getAssets();
           const asset = assets.find((a) => a.info.sourceFilename === s);
           if (asset === undefined) {
@@ -46,6 +46,19 @@ export default defineConfig({
             );
           }
           return asset.name;
+        },
+        assetsIn(s: string): string[] {
+          const assets = compilation.getAssets();
+          return assets
+            .filter((a) => a.info.sourceFilename?.startsWith(s + "/"))
+            .sort((a, b) =>
+              a.info.sourceFilename == b.info.sourceFilename
+                ? 0
+                : a.info.sourceFilename! < b.info.sourceFilename!
+                  ? -1
+                  : 1,
+            )
+            .map((a) => a.name);
         },
       };
     },

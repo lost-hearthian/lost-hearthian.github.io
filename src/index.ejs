@@ -20,15 +20,32 @@
           <div class="splide__track">
             <ul class="splide__list">
               <li class="splide__slide">
-                <img
-                  src="<%= asset('assets/the-secret-sleepover/cover.webp') %>"
-                />
+                <a href="#asuka-and-misaki">
+                  <img
+                    src="<%= asset('assets/Asuka and Misaki/cover.jpg') %>"
+                  />
+                </a>
               </li>
               <li class="splide__slide">
-                <img src="<%= asset('assets/blooddiary/cover.webp') %>" />
+                <a href="#ame-nochi-yuki">
+                  <img
+                    src="<%= asset('assets/Ame nochi Yuki/Ch2p01.webp') %>"
+                  />
+                </a>
               </li>
               <li class="splide__slide">
-                <img src="<%= asset('assets/asuka-and-misaki/cover.jpg') %>" />
+                <a href="#blooddiary0">
+                  <img
+                    src="<%= asset('assets/Yaya/BLOODDIARY0/ch0p01.webp') %>"
+                  />
+                </a>
+              </li>
+              <li class="splide__slide">
+                <a href="#the-secret-sleepover">
+                  <img
+                    src="<%= asset('assets/Yaya/The Secret Sleepover/Ch1p01.webp') %>"
+                  />
+                </a>
               </li>
             </ul>
           </div>
@@ -37,10 +54,63 @@
     </header>
 
     <section id="series">
+      <%- include("section.ejs") %>
+
       <h2>Series</h2>
+
+      <% const all_images = []; %>
+
+      <h3 id="asuka-and-misaki">Asuka and Misaki</h3>
+      <%- include("preview.ejs", { dir: "assets/Asuka and Misaki", all_images }) %>
+      <p>Lorem</p>
+
+      <h3 id="ame-nochi-yuki">Ame nochi Yuki</h3>
+      <%- include("preview.ejs", { dir: "assets/Ame nochi Yuki", all_images }) %>
+      <p>Lorem</p>
+
+      <h3 id="blooddiary0">BLOODDIARY0</h3>
+      <%- include("preview.ejs", { dir: "assets/Yaya/BLOODDIARY0", all_images }) %>
+      <p>Lorem</p>
+
+      <h3 id="devils-lover-1">Devil’s Lover 1</h3>
+      <%- include("preview.ejs", { dir: "assets/Yaya/Devil_s Lover 1", all_images }) %>
+      <p>Lorem</p>
+
+      <h3 id="devils-lover-2">Devil’s Lover 2</h3>
+      <%- include("preview.ejs", { dir: "assets/Yaya/Devil_s Lover 2", all_images }) %>
+      <p>Lorem</p>
+
+      <h3 id="lonely-lose">Lonely Lose</h3>
+      <%- include("preview.ejs", { dir: "assets/Yaya/Lonely Lose", all_images }) %>
+      <p>Lorem</p>
+
+      <h3 id="the-secret-sleepover">The Secret Sleepover</h3>
+      <%- include("preview.ejs", { dir: "assets/Yaya/The Secret Sleepover", all_images }) %>
+      <p>Lorem</p>
+
+      <h3 id="wanting-more">Wanting More</h3>
+      <%- include("preview.ejs", { dir: "assets/Yaya/Wanting More", all_images }) %>
+      <p>Lorem</p>
+
+      <div id="fullscreen" class="splide" role="group">
+        <button class="fullscreen">
+          <%- include("svg/fullscreen-exit.svg") %>
+        </button>
+        <div class="splide__track">
+          <ul class="splide__list">
+            <% for (const img of all_images) { %>
+            <li class="splide__slide">
+              <img src="<%= img %>" />
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section id="about">
+      <%- include("section.ejs") %>
+
       <h2>About</h2>
       <p>Lorem</p>
       <p>Lorem</p>

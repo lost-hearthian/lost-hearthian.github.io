@@ -10,7 +10,7 @@
 
   --wave-height: 20px;
   --nav-content-height: 80px;
-  --nav-height: calc(var(--nav-content-height) + var(--wave-height));
+  --nav-height: var(--nav-content-height);
 }
 
 body {
@@ -60,6 +60,7 @@ nav {
 
     > ul {
       position: fixed;
+      z-index: 1; /* Appear above the wave */
       right: 0;
 
       margin: 0;
@@ -76,24 +77,133 @@ nav {
 }
 
 /* Add the wave at the bottom of the <nav> and <header>. */
-nav,
-header,
-nav > details > ul {
+header {
   &::after {
-    content: " ";
+    content: "";
     position: absolute;
     left: 0px;
     top: 100%;
     background: var(--lime-cream);
     width: 100%;
     height: var(--wave-height);
-    mask: url("wavy.svg") repeat-x 120px 0 / 800px var(--wave-height);
-    z-index: -1; /* appear beneath the language dropdown */
+    mask: url("svg/wavy.svg") repeat-x 120px 0 / 800px var(--wave-height);
   }
 }
 
-section {
+*[id] {
   scroll-margin-top: calc(var(--nav-height) + 10px);
+}
+
+section {
+  display: flow-root;
+
+  > h2 {
+    margin-top: 0px;
+  }
+  > h3 {
+    clear: both;
+    padding-top: 1em;
+  }
+
+  --border-size: 100px;
+  --border-repeats: 10;
+  --border-color: var(--powder-blush);
+  --bg-color: color-mix(in oklab, var(--border-color), white 95%);
+  width: round(down, 100%, var(--border-size));
+  max-width: calc(var(--border-size) * 8);
+  padding: calc(var(--border-size) * 0.7);
+  margin: 80px auto var(--border-size) auto;
+  position: relative;
+
+  > .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: round(up, 100%, var(--border-size));
+    z-index: -1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      --margin: calc(var(--border-size) * 0.12);
+      top: var(--margin);
+      left: var(--margin);
+      width: calc(100% - 2 * var(--margin));
+      height: calc(100% - 2 * var(--margin));
+      background: var(--bg-color);
+      border-radius: calc(var(--border-size) * 0.9);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--border-color);
+      mask:
+        url("svg/corner/0.svg") no-repeat top left / var(--border-size)
+          var(--border-size),
+        url("svg/corner/1.svg") no-repeat top right / var(--border-size)
+          var(--border-size),
+        url("svg/corner/2.svg") no-repeat bottom right / var(--border-size)
+          var(--border-size),
+        url("svg/corner/3.svg") no-repeat bottom left / var(--border-size)
+          var(--border-size);
+    }
+
+    > .v-edge {
+      position: absolute;
+      top: 0;
+      left: var(--border-size);
+      width: calc(100% - 2 * var(--border-size));
+      height: 100%;
+
+      background: var(--border-color);
+      mask:
+        url("svg/edge/0.svg") repeat-x top left /
+          calc(var(--border-repeats) * var(--border-size)) var(--border-size),
+        url("svg/edge/2.svg") repeat-x bottom left /
+          calc(var(--border-repeats) * var(--border-size)) var(--border-size);
+    }
+
+    > .h-edge {
+      position: absolute;
+      top: var(--border-size);
+      left: 0;
+      width: 100%;
+      height: calc(100% - 2 * var(--border-size));
+
+      background: var(--border-color);
+      mask:
+        url("svg/edge/3.svg") repeat-y top left / var(--border-size)
+          calc(var(--border-repeats) * var(--border-size)),
+        url("svg/edge/1.svg") repeat-y top right / var(--border-size)
+          calc(var(--border-repeats) * var(--border-size));
+    }
+  }
+}
+
+.splide {
+  > .splide__pagination {
+    bottom: -1.3em;
+    .splide__pagination__page {
+      width: 28px;
+      height: 6px;
+      border-radius: 6px;
+      margin: 3px 6px;
+      &.is-active {
+        background: #aaa;
+        opacity: 0.9;
+        transform: none;
+        transition:
+          background 0.2s linear,
+          opacity 0.2s linear;
+      }
+    }
+  }
 }
 
 @font-face {
